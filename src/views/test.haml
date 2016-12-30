@@ -1,0 +1,27 @@
+- content_for :css_links do
+  %link(rel='stylesheet' href='/css/test.css')
+
+.warning 주의: 새로 고침을 하지마세요!
+
+%form(name='test' method='post' onsubmit='$("#waiting-message").modal({backdrop: "static", keyboard: false, show: true});')
+  %input(type='hidden' name='name' value='#{@name}')
+  %input(type='hidden' name='applied_dept' value='#{@applied_dept}')
+  %input(type='hidden' name='ridibooks_id' value='#{@ridibooks_id}')
+  %input(type='hidden' name='question_set' value='#{@question_set.id}')
+  %ol
+    - @questions.each do |question|
+      %li(class='question-contents')
+        = question.contents
+        %ul(class='list-unstyled')
+          - question.choices.shuffle.each do |choice|
+            %li(class='question-choice')
+              %input(type='radio' name='#{'answer-' + question.id.to_s}' value='#{choice.id}') &nbsp;
+              = choice.contents
+
+  %button(class='btn btn-lg btn-primary btn-block' type='submit' onclick='return confirm("한 번 제출하신 이후에는 되돌릴 수 없습니다. 이대로 제출하시겠습니까?");') 제출
+
+.modal(id='waiting-message')
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %p 잠시만 기다려주세요...

@@ -1,0 +1,27 @@
+= partial :'admin/nav'
+
+.container
+  %form(name='question' method='post')
+    .form-group
+      %label(class='control-label') 분야
+      %select(name='category_id')
+        - @categories.each do |category|
+          %option{:value => category.id, :selected => category.id == @question.category.id}
+            = category.name
+    .form-group
+      %label(class='control-label') 배점
+      %input(type='number' name='weight' min='1' max='4' value='#{@question.weight.to_i}' required)
+    .form-group
+      %label(class='control-label') 문제
+      %textarea(class='form-control' name='contents' rows='3' required)=@question.contents
+    .form-group
+      %label(class='control-label') 보기와 정답
+      %ul(class='list-unstyled')
+        - @question.choices.each do |choice|
+          %li
+            %input{:type => 'radio', :name =>'solution_id', :value => choice.id, :checked => @question.solution_id== choice.id, :required => true} &nbsp;
+            %input(type='text' name='choice-#{choice.id}' value='#{choice.contents}' required)
+    .form-group
+      %input(type='checkbox' name='reset_count' value='true')= "&nbsp;정답률(#{@question.correct_count}/#{@question.hit_count} = #{@question.correction_rate()}%) 초기화"
+    %button(class='btn btn-primary' type='submit') 저장
+    %button(class='btn btn-default' onclick='window.location.href=\'/admin/questions/#{@question.question_set.id}\'; return false;') 취소

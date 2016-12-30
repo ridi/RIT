@@ -1,0 +1,18 @@
+body {
+  padding: 40px;
+}
+
+.warning {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ff0000;
+  margin-bottom: 30px;
+}
+
+.question-contents {
+  margin-bottom: 30px;
+}
+
+.question-choice {
+  margin: 5px;
+}

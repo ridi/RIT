@@ -1,0 +1,12 @@
+.table {
+	margin-top: 20px;
+}
+
+.choices {
+	margin: 5px;
+}
+
+.correct-answer {
+	color: #f00;
+	font-weight: bold;
+}

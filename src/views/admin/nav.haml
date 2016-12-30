@@ -1,0 +1,8 @@
+%nav(class='navbar navbar-default')
+  %ul(class='nav navbar-nav')
+    %li(class='#{'active' if @nav == 'records'}')
+      %a(href='/admin/records') 기록 보기
+    %li(class='#{'active' if @nav == 'questions'}')
+      %a(href='/admin/questions') 문제 보기
+    %li
+      %a(href='/admin/logout') 로그아웃

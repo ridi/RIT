@@ -1,0 +1,26 @@
+- content_for :css_links do
+  %link(rel='stylesheet' href='/css/start.css')
+
+.container
+  %form(class='form-start' name='start' method='post')
+    %h1(class='form-start-heading') RIDI Initial Test
+    .form-group
+      %label(class='control-label') 이름
+      %input(class='form-control' type='text' name='name' placeholder='이름' autofocus='autofocus' required)
+    .form-group
+      %label(class='control-label') 지원 부서
+      %input(class='form-control' type='text' name='applied_dept' placeholder='지원 부서' required)
+    .form-group
+      %label(class='control-label') 리디북스 ID
+      %input(class='form-control' type='text' name='ridibooks_id' placeholder='리디북스 ID')
+    .form-group
+      %label(class='control-label') 문제 유형
+      %select(class='form-control' name='question_set')
+        %option(value='random') 무작위
+        - @question_sets.each do |question_set|
+          %option(value='#{question_set.id}')= question_set.name
+    %button(class='btn btn-lg btn-primary btn-block' type='submit') 시작
+
+- if not @message.nil?
+  :javascript
+    alert('#{@message}');

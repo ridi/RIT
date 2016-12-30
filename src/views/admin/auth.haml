@@ -1,0 +1,8 @@
+- content_for :css_links do
+  %link(rel='stylesheet' href='/css/admin/auth.css')
+
+.container
+  %form(class='form-signin' name='auth' method='post')
+    %h2(class='form-signin-heading') 관리자 로그인
+    %input(class='form-control' type='password' name='password' placeholder='PASSWORD' autofocus='autofocus' required)
+    %button(class='btn btn-lg btn-primary btn-block' type='submit') 로그인

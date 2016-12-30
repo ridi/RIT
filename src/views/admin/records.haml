@@ -1,0 +1,29 @@
+= partial :'admin/nav'
+
+.table-responsive
+  %table(class='table table-striped table-hover table-bordered')
+    %thead
+      %tr
+        %th 이름
+        %th 지원 분야
+        %th 리디북스 ID
+        %th 일시
+        %th 문제 유형
+        - @categories.each do |category|
+          %th=category.name
+        %th 총점
+    %tbody
+      - @result.records.each do |record|
+        %tr
+          %td=record.name
+          %td=record.applied_dept
+          %td
+            - unless record.ridibooks_id.nil? or record.ridibooks_id.empty?
+              <a href='https://admin.ridibooks.com/cs/user_detail?user_id=#{record.ridibooks_id}' target='_blank'>#{record.ridibooks_id}</a>
+          %td=record.created_at.strftime '%Y-%m-%d %H:%M:%S'
+          %td=record.question_set.name
+          - @categories.each do |category|
+            %td=record.score_for_category(category).to_i
+          %td=record.score.to_i
+
+!= paginate @result, items_per_page: 20, labels: {first: '«', last: '»'}, renderer: 'haml'
