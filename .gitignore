@@ -2,4 +2,3 @@
 /tmp
 /*.sublime-*
 /development.db
-Gemfile.lock
