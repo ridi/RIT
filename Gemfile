@@ -12,3 +12,7 @@ gem 'dm-migrations', '~>1.2.0'
 gem 'dm-postgres-adapter', '~>1.2.0'
 gem 'haml', '~>4.0.5'
 gem 'thin', '~>1.6.1'
+
+group :development do
+  gem 'dm-sqlite-adapter', '~>1.2.0'
+end
