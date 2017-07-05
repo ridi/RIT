@@ -14,9 +14,6 @@
     },
     "DATABASE_URL": {
       "required": true
-    },
-    "BUNDLE_WITHOUT": {
-      "required": true
     }
   },
   "formation": {
