@@ -68,7 +68,7 @@ module Ridiquiz
       end
 
       record.save
-      flash[:message] = '감사합니다! 성공적으로 제출되었습니다'
+      flash[:message] = '성공적으로 제출하였습니다.'
       redirect '/', 302
     end
   end

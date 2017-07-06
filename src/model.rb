@@ -2,7 +2,7 @@ require 'dm-core'
 require 'dm-migrations'
 
 module Ridiquiz
-  DataMapper.setup :default, ENV['DATABASE_URL'] || "sqlite:///#{WebApp::root}/database"
+  DataMapper.setup :default, ENV['DATABASE_URL'] || "sqlite:///#{WebApp::root}/development.db"
 
   DataMapper.repository(:default).adapter.resource_naming_convention = 
     DataMapper::NamingConventions::Resource::UnderscoredAndPluralizedWithoutModule

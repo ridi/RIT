@@ -1,5 +1,4 @@
 /.bundle
 /tmp
 /*.sublime-*
-/database
-
+/development.db
