@@ -41,7 +41,7 @@
 ### Install gems and run local server
 
 ```sh
-$ bundle install
+$ bundle install --without production
 $ rackup
 ```
 
@@ -57,4 +57,3 @@ $ rackup
 Heroku의 heroku/ruby buildpack을 이용한 배포에 최적화 되어 있으며 Repository 연결 후 환경 변수 설정 외의 별도 설정은 필요하지 않습니다.
 
 Apache를 사용하고 싶다면 [Passenger](https://www.phusionpassenger.com/) 등을 이용해 연동 할 수 있습니다. [관련 문서](https://www.phusionpassenger.com/library/walkthroughs/start/ruby.html)를 참고하세요.
-
