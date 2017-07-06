@@ -28,7 +28,7 @@
 
 * Database
 
-  * PostgreSQL과 SQLite가 사용 가능합니다. (Prouduction 환경에서는 PostgreSQL 사용을 권장합니다)
+  * PostgreSQL과 SQLite가 사용 가능합니다. (Production 환경에서는 PostgreSQL 사용을 권장합니다)
 
   * DataMapper가 필요한 테이블들을 자동으로 생성하여 주므로 별도의 테이블 생성은 필요하지 않습니다. 스키마 정보는 [이 코드](src/model.rb)를 참고하세요.
 
