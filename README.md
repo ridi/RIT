@@ -28,15 +28,15 @@
 
 * Database
 
-  * PostgreSQL과 SQLite가 사용 가능합니다. (Production 환경에서는 PostgreSQL 사용을 권장합니다)
+  * 개발 환경에서는 편의를 위해 SQLite를 사용하며  Production 환경에서는 PostgreSQL 사용을 권장합니다.
+
+    * 미리 준비된 Sample SQLite database file을 복사하여 사용할 수도 있습니다.
+
+      ```sh
+      $ cp development.db.sample development.db
+      ```
 
   * DataMapper가 필요한 테이블들을 자동으로 생성하여 주므로 별도의 테이블 생성은 필요하지 않습니다. 스키마 정보는 [이 코드](src/model.rb)를 참고하세요.
-
-  * 개발 환경에서는 미리 준비된 Sample SQLite database file을 복사하여 사용할 수도 있습니다.
-
-    ```sh
-    $ cp development.db.sample development.db
-    ```
 
 ### Install gems and run local server
 
