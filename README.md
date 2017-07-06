@@ -23,7 +23,7 @@
 * Bundler
 
   ```sh
-  $ gem isntall bundler
+  $ gem install bundler
   ```
 
 * Database
