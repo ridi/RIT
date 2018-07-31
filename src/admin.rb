@@ -1,5 +1,6 @@
 require 'sinatra/session'
 require 'sinatra/paginate'
+require 'csv'
 
 module Ridiquiz
   Struct.new('Result', :total, :size, :records)
@@ -118,6 +119,31 @@ module Ridiquiz
       @result = Struct::Result.new(Record.count, records.count, records)
 
       haml :'admin/records'
+    end
+
+    get '/admin/records/csv' do
+      content_type 'application/csv'
+      attachment   'records.csv'
+
+      session!
+      @categories = Category.all
+      records = Record.all(:order => [:created_at.desc])
+
+      CSV.generate(headers: true) do |csv|
+        csv << ['이름', '지원 분야', '리디북스 ID', '일시', '문제 유형', @categories.map { |c| c.name }, '총점'].flatten
+        records.each { |record|
+          csv <<
+          [
+            record.name,
+            record.applied_dept,
+            record.ridibooks_id,
+            record.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            record.question_set.name,
+            @categories.map { |c| record.score_for_category(c).to_i },
+            record.score.to_i,
+          ].flatten
+        }
+      end
     end
   end
 end
